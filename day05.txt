@@ -1,0 +1,13 @@
+Day 5: SELinux Installation and Configuration
+Today, I worked on enhancing server security by installing and configuring SELinux on CentOS Stream 9. The goal was to install SELinux packages and permanently disable SELinux (for now) without rebooting immediately.
+Steps & Commands Used
+1️⃣ Check OS details
+cat /etc/os-release
+2️⃣ Install SELinux packages
+sudo dnf install -y selinux-policy selinux-policy-targeted policycoreutils
+3️⃣ Edit SELinux configuration
+sudo vi /etc/selinux/config
+Change:
+SELINUX=enforcing
+to:
+SELINUX=disabled
