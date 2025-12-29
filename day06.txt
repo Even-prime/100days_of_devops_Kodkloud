@@ -1,0 +1,13 @@
+ssh userName@serverName
+yes 
+password
+cat etc/os-release
+sudo yum install -y
+sudo systemctl status crond
+suso systemctl start crond
+sudo crontab -l
+sudo crontab -e
+*/s****echo hello > tmp/cron_text
+esc 
+:wq
+
