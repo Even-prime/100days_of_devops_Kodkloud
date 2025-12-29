@@ -1,4 +1,0 @@
-ssh username@user
-pass: qwerpoiuy
-adduser lupon
-pass:
