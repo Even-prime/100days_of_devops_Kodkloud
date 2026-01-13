@@ -1,0 +1,37 @@
+# 1. SSH into the server
+ssh steve@st
+
+# 2. Become root (required for install & config)
+sudo -i
+
+# 3. Install Tomcat
+yum install -y tomcat
+
+# 4. Start Tomcat service
+systemctl start tomcat
+
+# 5. Copy ROOT.war from local machine to server
+# (Run this from your LOCAL machine, not inside SSH)
+scp /tmp/ROOT.war steve@st:/home/steve/
+
+# 6. Move the WAR file to Tomcat webapps directory
+mv /home/steve/ROOT.war /usr/share/tomcat/webapps/
+
+# 7. Edit Tomcat configuration file
+vi /etc/tomcat/server.xml
+
+# ---- INSIDE vi ----
+# Press i  → enter INSERT mode
+# Find Connector port (usually 8080) and change it
+# Example:
+# <Connector port="9090" protocol="org.apache.coyote.http11.Http11NioProtocol" />
+#
+# Save and exit:
+# :wq
+# -------------------
+
+# 8. Restart Tomcat to apply changes
+systemctl restart tomcat
+
+# 9. Verify Tomcat is running on the new port
+curl http://localhost:9090
